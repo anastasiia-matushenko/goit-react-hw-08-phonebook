@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Button, Item } from "./ContactsItem.styled";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/contacts/contactsOperations";
