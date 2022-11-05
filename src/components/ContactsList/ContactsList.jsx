@@ -5,22 +5,22 @@ import { List } from './ContactsList.styled';
 export const ContactsList = ({ contacts }) => {
   return (
     <List>
-      {contacts.map(({ id, name, phone }) => (
+      {contacts.map(({ id, name, number }) => (
         <ContactsItem
           key={id}
           idContact={id}
           contact={name}
-          phone={phone}
+          number={number}
         />
       ))}
     </List>
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-};
+// ContactsList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//     }).isRequired
+//   ).isRequired,
+// };

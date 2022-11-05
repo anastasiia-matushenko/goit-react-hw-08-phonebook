@@ -1,63 +1,37 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { ContactsPage } from "pages/ContactsPage/ContactsPage";
+import { HomePage } from "pages/HomePage/HomePage";
+import { LoginPage } from "pages/LoginPage/LoginPage";
+import { RegisterPage } from "pages/RegisterPage/RegisterPage";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout/Layout";
+import { selectIsFetchingCurrentUser } from "redux/auth/authSelectors";
+import { useEffect } from "react";
+import { fetchCurrentUser } from "redux/auth/authOperations";
+import { PublicRoute } from "HOCs/PublicRoute";
+import { PrivateRoute } from "HOCs/PrivateRoute";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Container, Message, Subtitle, Title } from './App.styled';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactsList } from './ContactsList/ContactsList';
-import { Filter } from './Filter/Filter';
-
-import { filterContacts } from 'redux/contacts/contactsSlice';
-import { selectContacts, selectError, selectFilter, selectIsLoading, selectVisibleContacts } from 'redux/contacts/contactsSelectors';
-import { addContact, fetchContacts } from 'redux/contacts/contactsOperations';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const filterName = useSelector(selectFilter);
-  const error = useSelector(selectError);
-
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
+  console.log("isFetchingCurrentUser", isFetchingCurrentUser);
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  const isLoading = useSelector(selectIsLoading);
-
-  const addContacts = ({ name, phone }) => {
-    const newContact = {
-      name,
-      phone,
-    };
-
-    const newName = contacts.some(contact => {
-      return contact.name.toLowerCase() === name.toLowerCase();
-    });
-
-    const result = newName
-      ? toast.error(`${name} is already in contacts`, {
-        position: 'top-center',
-      })
-      : dispatch(addContact(newContact))
-    return result;
-  };
-
-  const contactsFilterList = useSelector(selectVisibleContacts);
-
   return (
-    <Container>
-      <Title>Phonebook</Title>
-      <ContactForm addContacts={addContacts} />
-      <Subtitle>Contacts</Subtitle>
-      <Filter value={filterName} onChange={evt => dispatch(filterContacts(evt.target.value))} />
-      {isLoading && <p>Loading...</p>}
-      {!isLoading ? contactsFilterList.length > 0
-        ? <ContactsList
-          contacts={contactsFilterList}
-        />
-        : <Message>❌ Your query did not find anything</Message> : ""}
-      {error && <p>{error.message}</p>}
-      <ToastContainer />
-    </Container>
+    <>
+      {isFetchingCurrentUser ? <b>Refreshing user...</b> : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<PublicRoute><HomePage /></PublicRoute>} />
+            <Route path="contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+            <Route path="register" element={<PublicRoute restricted><RegisterPage /></PublicRoute>} />
+            <Route path="login" element={<PublicRoute restricted><LoginPage /></PublicRoute>} />
+          </Route>
+        </Routes>)}
+    </>
   );
 };
