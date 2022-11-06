@@ -9,21 +9,14 @@ import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 
 import { filterContacts } from 'redux/contacts/contactsSlice';
-import { selectContacts, selectError, selectFilter, selectIsLoading, selectVisibleContacts } from 'redux/contacts/contactsSelectors';
+import { selectError, selectFilter, selectIsLoading, selectVisibleContacts } from 'redux/contacts/contactsSelectors';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectIsLoadingUser } from 'redux/auth/authSelectors';
 import { isAuthorizationHeaders } from 'redux/auth/authOperations';
 
 export const ContactsPage = () => {
-    const contacts = useSelector(selectContacts);
     const filterName = useSelector(selectFilter);
     const error = useSelector(selectError);
-
-    // const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
-
-    // const token = useSelector(selectToken);
-
-    // console.log(isFetchingCurrentUser, token);
     const isLoading = useSelector(selectIsLoading);
 
     const isLoadingUser = useSelector(selectIsLoadingUser);
@@ -49,7 +42,7 @@ export const ContactsPage = () => {
     // };
 
     const contactsFilterList = useSelector(selectVisibleContacts);
-    console.log(contactsFilterList);
+    // console.log(contactsFilterList);
     return (
         <Container>
             <Title>Phonebook</Title>
@@ -59,9 +52,9 @@ export const ContactsPage = () => {
             <Subtitle>Contacts</Subtitle>
             <Filter value={filterName} onChange={evt => dispatch(filterContacts(evt.target.value))} />
             {isLoading && <p>Loading...</p>}
-            {!isLoading ? contacts.length > 0
+            {!isLoading ? contactsFilterList.length > 0
                 ? <ContactsList
-                    contacts={contacts}
+                    contacts={contactsFilterList}
                 />
                 : <Message>❌ Your query did not find anything</Message> : ""}
             {error && <p>{error.message}</p>}

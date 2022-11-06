@@ -7,9 +7,11 @@ const Link = styled(NavLink)`
   padding: 15px 0;
   text-decoration: none;
   font-size: 18px;
-  color: blue;
+  /* color: blue; */
+  color: #3333ff;
   &.active {
-    color: red;
+    color: #33ffff;
+    border-bottom: 1px solid #33ffff;
   }
 `;
 

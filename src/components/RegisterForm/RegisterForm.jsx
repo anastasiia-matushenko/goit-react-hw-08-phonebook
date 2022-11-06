@@ -44,6 +44,8 @@ export const RegisterForm = () => {
                 <Span>Name</Span>
                 <Input
                     variant='flushed'
+                    autocomplete="off"
+                    borderColor="gray"
                     size='md'
                     type="text"
                     name="name"
@@ -59,6 +61,8 @@ export const RegisterForm = () => {
                 <Span>Email</Span>
                 <Input
                     variant='flushed'
+                    autocomplete="off"
+                    borderColor="gray"
                     type="email"
                     name="email"
                     value={email}
@@ -70,7 +74,9 @@ export const RegisterForm = () => {
             <Label>
                 <Span>Password</Span>
                 <Input
+                    autocomplete="off"
                     variant='flushed'
+                    borderColor="gray"
                     type="password"
                     name="password"
                     value={password}
@@ -79,7 +85,7 @@ export const RegisterForm = () => {
                     placeholder="Your password"
                 />
             </Label>
-            <Button colorScheme='teal' size='md' display="flex" width='150px' mt="25px" mx="auto">Register</Button>
+            <Button colorScheme='teal' size='md' display="flex" width='150px' mt="25px" mx="auto" type="submit">Register</Button>
         </Form>
     )
 }
