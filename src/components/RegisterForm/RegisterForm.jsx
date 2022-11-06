@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { register } from "redux/auth/authOperations";
+import { Button } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
+import { Form, Label, Span, TitleForm } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
     const [name, setName] = useState("");
@@ -35,10 +38,13 @@ export const RegisterForm = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                <span>Name</span>
-                <input
+        <Form onSubmit={handleSubmit}>
+            <TitleForm>Registration</TitleForm>
+            <Label>
+                <Span>Name</Span>
+                <Input
+                    variant='flushed'
+                    size='md'
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -48,10 +54,11 @@ export const RegisterForm = () => {
                     placeholder="Enter name"
 
                 />
-            </label>
-            <label>
-                <span>Email</span>
-                <input
+            </Label>
+            <Label>
+                <Span>Email</Span>
+                <Input
+                    variant='flushed'
                     type="email"
                     name="email"
                     value={email}
@@ -59,10 +66,11 @@ export const RegisterForm = () => {
                     required
                     placeholder="example@example.com"
                 />
-            </label>
-            <label>
-                <span>Password</span>
-                <input
+            </Label>
+            <Label>
+                <Span>Password</Span>
+                <Input
+                    variant='flushed'
                     type="password"
                     name="password"
                     value={password}
@@ -70,8 +78,8 @@ export const RegisterForm = () => {
                     required
                     placeholder="Your password"
                 />
-            </label>
-            <button>Register</button>
-        </form>
+            </Label>
+            <Button colorScheme='teal' size='md' display="flex" width='150px' mt="25px" mx="auto">Register</Button>
+        </Form>
     )
 }

@@ -22,6 +22,9 @@ const token = {
   },
 };
 
+export const isAuthorizationHeaders = () =>
+  axios.defaults.headers.common.Authorization ? true : false;
+
 export const register = createAsyncThunk(
   'auth/register',
   async (userData, { rejectWithValue }) => {
