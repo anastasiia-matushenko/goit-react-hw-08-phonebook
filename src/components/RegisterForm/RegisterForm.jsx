@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
+import { Input, Button } from '@chakra-ui/react'
 import { register } from "redux/auth/authOperations";
-import { Button } from '@chakra-ui/react'
-import { Input } from '@chakra-ui/react'
 import { Form, Label, Span, TitleForm } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
@@ -36,7 +35,6 @@ export const RegisterForm = () => {
         setPassword("");
     }
 
-
     return (
         <Form onSubmit={handleSubmit}>
             <TitleForm>Registration</TitleForm>
@@ -44,7 +42,7 @@ export const RegisterForm = () => {
                 <Span>Name</Span>
                 <Input
                     variant='flushed'
-                    autocomplete="off"
+                    autoComplete="off"
                     borderColor="gray"
                     size='md'
                     type="text"
@@ -61,7 +59,7 @@ export const RegisterForm = () => {
                 <Span>Email</Span>
                 <Input
                     variant='flushed'
-                    autocomplete="off"
+                    autoComplete="off"
                     borderColor="gray"
                     type="email"
                     name="email"
@@ -74,7 +72,7 @@ export const RegisterForm = () => {
             <Label>
                 <Span>Password</Span>
                 <Input
-                    autocomplete="off"
+                    autoComplete="off"
                     variant='flushed'
                     borderColor="gray"
                     type="password"

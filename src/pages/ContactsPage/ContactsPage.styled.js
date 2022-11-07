@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
-const Title = styled.h1`
-  text-align: center;
-  color: #1f3349;
-`;
-
-const Subtitle = styled.h2`
+const Title = styled.h2`
+  margin-top: 15px;
+  margin-bottom: 10px;
   text-align: center;
   font-weight: 600;
   font-size: 24px;
@@ -20,9 +17,26 @@ const Message = styled.p`
 `;
 
 const Container = styled.div`
-  width: 400px;
+  display: flex;
+  gap: 20px;
+  width: 1200px;
+  min-height: 360px;
   margin: 0 auto;
   padding: 0 20px;
 `;
 
-export { Title, Subtitle, Message, Container };
+const BoxForm = styled.div`
+  width: 400px;
+  padding: 0 20px;
+  background-color: #e6eeff;
+  border-radius: 10px;
+`;
+
+const BoxContacts = styled.div`
+  width: calc(100% - 420px);
+  padding: 0 20px;
+  background-color: #e6eeff;
+  border-radius: 10px;
+`;
+
+export { Title, Message, Container, BoxForm, BoxContacts };

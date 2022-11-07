@@ -1,5 +1,7 @@
+import { TitleHome } from "./HomePage.styled"
+
 export const HomePage = () => {
     return (
-        <h1>Hello in user's App</h1>
+        <TitleHome>Hello in user's App</TitleHome>
     )
 }

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 import { List } from './ContactsList.styled';
 
@@ -17,10 +17,10 @@ export const ContactsList = ({ contacts }) => {
   );
 };
 
-// ContactsList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//     }).isRequired
-//   ).isRequired,
-// };
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};

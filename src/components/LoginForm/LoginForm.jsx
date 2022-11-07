@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { login } from "redux/auth/authOperations";
+import { Input, Button } from '@chakra-ui/react'
+import { Form, Label, Span, TitleForm } from "./LoginForm.styled";
 
 export const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -29,10 +31,15 @@ export const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                <span>Email</span>
-                <input
+        <Form onSubmit={handleSubmit}>
+            <TitleForm>Log In</TitleForm>
+            <Label>
+                <Span>Email</Span>
+                <Input
+                    variant='flushed'
+                    autoComplete="off"
+                    borderColor="gray"
+                    size='md'
                     type="email"
                     name="email"
                     value={email}
@@ -40,10 +47,14 @@ export const LoginForm = () => {
                     required
                     placeholder="example@example.com"
                 />
-            </label>
-            <label>
-                <span>Password</span>
-                <input
+            </Label>
+            <Label>
+                <Span>Password</Span>
+                <Input
+                    variant='flushed'
+                    autoComplete="off"
+                    borderColor="gray"
+                    size='md'
                     type="password"
                     name="password"
                     value={password}
@@ -51,8 +62,8 @@ export const LoginForm = () => {
                     required
                     placeholder="Your password"
                 />
-            </label>
-            <button>Login</button>
-        </form>
+            </Label>
+            <Button colorScheme='teal' size='md' display="flex" width='150px' mt="25px" mx="auto" type="submit">Login</Button>
+        </Form>
     )
 }

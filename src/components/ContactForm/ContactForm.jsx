@@ -1,11 +1,10 @@
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Input, Button, Form, Label } from './ContactForm.styled';
 import { addContact } from 'redux/contacts/contactsOperations';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { Input, Button, Form, Label } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -92,6 +91,3 @@ export const ContactForm = () => {
   );
 };
 
-// ContactForm.propTypes = {
-//   addContacts: PropTypes.func.isRequired,
-// };

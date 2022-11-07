@@ -1,6 +1,5 @@
 import { Link, List } from "./AuthNav.styled"
 
-
 export const AuthNav = () => {
     return (
         <List>

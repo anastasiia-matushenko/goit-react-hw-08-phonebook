@@ -4,10 +4,16 @@ const Form = styled.form`
   width: 440px;
   margin: 0 auto;
   padding: 20px 20px;
-  box-shadow: 0px 1px 4px rgba(126, 147, 255, 0.2);
-  border-radius: 8px;
-  /* background-color: aliceblue; */
-  background-color: #e0e0eb;
+  border-radius: 10px;
+  background: rgb(224, 224, 235)
+    radial-gradient(
+      circle at 0 0,
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.35)
+    );
+  box-shadow: inset rgba(0, 0, 0, 0.5) -3px -3px 8px,
+    inset rgba(255, 255, 255, 0.9) 3px 3px 8px,
+    rgba(0, 0, 0, 0.8) 3px 3px 8px -3px;
 `;
 
 const TitleForm = styled.h2`

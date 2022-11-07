@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Input = styled.input`
   display: block;
   width: 100%;
-  width: 288px;
   padding: 11px 16px;
   outline: none;
   background: #f4f4f4;
@@ -18,7 +17,16 @@ const Input = styled.input`
 
 const Label = styled.label`
   display: block;
-  padding: 11px 0;
+  padding: 15px 0;
 `;
 
-export { Input, Label };
+const Span = styled.span`
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #7f8e9d;
+`;
+
+export { Input, Label, Span };
