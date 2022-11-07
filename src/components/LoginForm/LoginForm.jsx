@@ -45,7 +45,7 @@ export const LoginForm = () => {
                     value={email}
                     onChange={handleChange}
                     required
-                    placeholder="example@example.com"
+                    placeholder="email@example.com"
                 />
             </Label>
             <Label>
